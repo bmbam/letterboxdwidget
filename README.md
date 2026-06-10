@@ -115,7 +115,7 @@ Then create a scheduled workflow to automatically update your widget.
    * Followers
 4. Updates your Discord Profile Widget through Discord's Application Identities API.
 
-   https://cdn.discordapp.com/attachments/964592222492315712/1514394862081015979/image.png
+  
 ## Disclaimer
 
 This project relies on:
