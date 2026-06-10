@@ -13,7 +13,7 @@ This project updates a Discord widget with data from your Letterboxd profile, in
 
 ## Preview
 
-![Widget Preview](https://cdn.discordapp.com/attachments/964592222492315712/1514394862081015979/image.png?ex=6a2b359f&is=6a29e41f&hm=26b315c99f91c8cba2e1ee796f97acd69f99e0d6a8aed0ee843520c5d2dfcac2&)
+![Widget Preview](https://cdn.discordapp.com/attachments/964592222492315712/1514394862081015979/image.png?ex=6a2b359f\&is=6a29e41f\&hm=26b315c99f91c8cba2e1ee796f97acd69f99e0d6a8aed0ee843520c5d2dfcac2&)
 
 ## Features
 
@@ -36,6 +36,25 @@ Before using this project, you must already have:
 * A Letterboxd account
 
 > This project does **not** create Discord widgets. It only updates an existing widget.
+
+## Creating a Discord Profile Widget
+
+Before using this project, you need to create and publish a Discord Profile Widget.
+
+Follow Chloe Cinders' guide:
+
+https://chloecinders.com/blog/discord-widgets
+
+The guide covers:
+
+* Creating a Discord application
+* Enabling the Social SDK
+* Creating widget fields
+* Publishing the widget
+* Authorizing the application
+* Adding the widget to your Discord profile
+
+Once your widget is set up, return here and configure the required fields below.
 
 ## Widget Configuration
 
@@ -162,6 +181,10 @@ This project relies on:
 
 Future changes by either service may affect functionality.
 
-## License
+## Credits
 
-MIT
+Created by **Punx**.
+
+Special thanks to Chloe Cinders for her Discord Profile Widgets guide:
+
+https://chloecinders.com/blog/discord-widgets
