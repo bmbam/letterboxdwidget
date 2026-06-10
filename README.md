@@ -1,8 +1,8 @@
 # Letterboxd Discord Widget
 
-Automatically sync your Letterboxd activity with Discord Profile Widgets.
+Automatically sync your Letterboxd profile with Discord Profile Widgets.
 
-This script updates your Discord widget with data from your Letterboxd profile, including:
+This project updates a Discord widget with data from your Letterboxd profile, including:
 
 * Latest watched film
 * Letterboxd avatar
@@ -11,20 +11,18 @@ This script updates your Discord widget with data from your Letterboxd profile, 
 * Following count
 * Followers count
 
-## Example
-
-
+## Preview
 
 ![Widget Preview](https://cdn.discordapp.com/attachments/964592222492315712/1514394862081015979/image.png?ex=6a2b359f&is=6a29e41f&hm=26b315c99f91c8cba2e1ee796f97acd69f99e0d6a8aed0ee843520c5d2dfcac2&)
 
-The widget can automatically display:
+## Features
 
-* Username
-* Latest watched film
-* Total films watched
-* Films watched this year
-* Following
-* Followers
+* Automatic Letterboxd profile syncing
+* Dynamic avatar support
+* Latest watched film from RSS feed
+* Profile statistics scraping
+* GitHub Actions support
+* No self-hosting required
 
 ## Requirements
 
@@ -37,11 +35,11 @@ Before using this project, you must already have:
 * Your Discord User ID
 * A Letterboxd account
 
-This project does **not** create the Discord widget for you. It only updates an existing widget.
+> This project does **not** create Discord widgets. It only updates an existing widget.
 
-## Widget Fields
+## Widget Configuration
 
-Your Discord widget must contain the following fields:
+Create the following fields in your Discord widget:
 
 | Name         | Type   |
 | ------------ | ------ |
@@ -52,7 +50,16 @@ Your Discord widget must contain the following fields:
 | following    | String |
 | followers    | String |
 
-The script will automatically populate these fields.
+### Important
+
+For the image field, make sure:
+
+```txt
+Value Type: User Data
+Data Field: avatar
+```
+
+Do **not** use `Application Asset`, otherwise the avatar will not update dynamically.
 
 ## Installation
 
@@ -92,16 +99,24 @@ node update-widget.js
 
 ## GitHub Actions
 
-Add the following repository secrets:
+Create the following repository secrets:
 
 * BOT_TOKEN
 * APPLICATION_ID
 * USER_ID
 * LETTERBOXD_USER
 
-Then create a scheduled workflow to automatically update your widget.
+Then create a workflow that runs:
+
+```bash
+node update-widget.js
+```
+
+on your preferred schedule.
 
 ## How It Works
+
+The script:
 
 1. Reads your Letterboxd RSS feed.
 2. Scrapes your Letterboxd profile.
@@ -113,9 +128,31 @@ Then create a scheduled workflow to automatically update your widget.
    * Films watched this year
    * Following
    * Followers
-4. Updates your Discord Profile Widget through Discord's Application Identities API.
+4. Updates your Discord Profile Widget using Discord's Application Identities API.
 
-  
+## Troubleshooting
+
+### Avatar does not update
+
+Make sure the widget image is configured as:
+
+```txt
+Value Type: User Data
+Data Field: avatar
+```
+
+Using `Application Asset` will display a static image instead of the dynamic avatar.
+
+### Stats are not updating
+
+Verify:
+
+* BOT_TOKEN is valid
+* APPLICATION_ID is correct
+* USER_ID is correct
+* LETTERBOXD_USER exists
+* GitHub Actions secrets are configured properly
+
 ## Disclaimer
 
 This project relies on:
@@ -124,3 +161,7 @@ This project relies on:
 * Discord's experimental Application Identities API
 
 Future changes by either service may affect functionality.
+
+## License
+
+MIT
