@@ -15,11 +15,7 @@ This script updates your Discord widget with data from your Letterboxd profile, 
 
 
 
-## Preview
-
-<p align="center">
-  <img src="https://cdn.discordapp.com/attachments/964592222492315712/1514394862081015979/image.png" width="500">
-</p>
+![Widget Preview](https://cdn.discordapp.com/attachments/964592222492315712/1514394862081015979/image.png?ex=6a2b359f&is=6a29e41f&hm=26b315c99f91c8cba2e1ee796f97acd69f99e0d6a8aed0ee843520c5d2dfcac2&)
 
 The widget can automatically display:
 
