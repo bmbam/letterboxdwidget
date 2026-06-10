@@ -38,7 +38,7 @@ async function updateWidget() {
   const avatar =
     $('meta[property="og:image"]').attr("content") ||
     "https://a.ltrbxd.com/static/img/default-avatar-0-1000.png";
-
+console.log("Avatar URL:", avatar);
   // Stats
   const stats = [];
 
