@@ -13,7 +13,7 @@ if (!username) {
 throw new Error("LETTERBOXD_USER missing");
 }
 
-// RSS
+// RSS Feed
 const feed = await parser.parseURL(
 `https://letterboxd.com/${username}/rss/`
 );
@@ -21,17 +21,21 @@ const feed = await parser.parseURL(
 const latestItem = feed.items?.[0];
 
 const latestMovie =
-latestItem?.title || "No recent film";
+latestItem?.title?.trim() || "No recent film";
 
-const ratingMatch =
-latestItem?.content?.match(
-/★(?:½)?|★★(?:½)?|★★★(?:½)?|★★★★(?:½)?|★★★★★/
+let rating = "N/A";
+
+const content = latestItem?.content || "";
+
+const match = content.match(
+/★★★★★|★★★★½|★★★★|★★★½|★★★|★★½|★★|★½|★/
 );
 
-const rating =
-ratingMatch?.[0] || "N/A";
+if (match) {
+rating = match[0];
+}
 
-// Profile
+// Profile Page
 const { data } = await axios.get(
 `https://letterboxd.com/${username}/`,
 {
@@ -80,18 +84,18 @@ url: avatar
 },
 {
 type: 1,
-name: "movie",
-value: latestMovie
+name: "films",
+value: films
 },
 {
 type: 1,
-name: "last_watched",
+name: "last_rating",
 value: rating
 },
 {
 type: 1,
-name: "films",
-value: films
+name: "last_watched",
+value: latestMovie
 },
 {
 type: 1,
@@ -130,6 +134,8 @@ console.log("👤 User:", username);
 console.log("🎬 Movie:", latestMovie);
 console.log("⭐ Rating:", rating);
 console.log("🎞 Films:", films);
+console.log("📅 This Year:", thisYear);
+console.log("➡️ Following:", following);
 console.log("👥 Followers:", followers);
 }
 
