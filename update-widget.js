@@ -19,6 +19,7 @@ const feed = await parser.parseURL(
 );
 
 const latestItem = feed.items?.[0];
+  console.log(JSON.stringify(latestItem, null, 2));
 
 const rawTitle =
   latestItem?.title?.trim() || "No recent film";
