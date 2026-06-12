@@ -20,20 +20,22 @@ const feed = await parser.parseURL(
 
 const latestItem = feed.items?.[0];
 
-const latestMovie =
-latestItem?.title?.trim() || "No recent film";
+const rawTitle =
+  latestItem?.title?.trim() || "No recent film";
 
-let rating = "N/A";
-
-const content = latestItem?.content || "";
-
-const match = content.match(
-/★★★★★|★★★★½|★★★★|★★★½|★★★|★★½|★★|★½|★/
+const ratingMatch = rawTitle.match(
+  /(★★★★★|★★★★½|★★★★|★★★½|★★★|★★½|★★|★½|★)$/
 );
 
-if (match) {
-rating = match[0];
-}
+const rating =
+  ratingMatch?.[1] || "N/A";
+
+const latestMovie = rawTitle
+  .replace(
+    /\s*-\s*(★★★★★|★★★★½|★★★★|★★★½|★★★|★★½|★★|★½|★)$/,
+    ""
+  )
+  .trim();
 
 // Profile Page
 const { data } = await axios.get(
