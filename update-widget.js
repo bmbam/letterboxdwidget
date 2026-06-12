@@ -139,6 +139,7 @@ console.log("🎞 Films:", films);
 console.log("📅 This Year:", thisYear);
 console.log("➡️ Following:", following);
 console.log("👥 Followers:", followers);
+  
 }
 
 updateWidget().catch(err => {
